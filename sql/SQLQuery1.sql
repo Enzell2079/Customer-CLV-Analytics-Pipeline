@@ -31,7 +31,7 @@ FROM online_retail;
 
 
 
-# Dim_Customers creation
+-- Dim_Customers creation
 
 CREATE TABLE Dim_Customers (
     CustomerKey INT IDENTITY(1,1) PRIMARY KEY,
@@ -51,7 +51,7 @@ FROM (
 WHERE Customer_ID IS NOT NULL;
 
 
-# Creation Dim_Products
+-- Creation Dim_Products
 
 CREATE TABLE Dim_Products (
     ProductKey INT IDENTITY(1,1) PRIMARY KEY,
@@ -68,7 +68,7 @@ FROM (
     SELECT StockCode, Description FROM online_retail_2
 ) t;
 
-# Creation Dim_Country
+-- Creation Dim_Country
 
 CREATE TABLE Dim_Country (
     CountryKey INT IDENTITY(1,1) PRIMARY KEY,
@@ -84,7 +84,7 @@ FROM (
     SELECT Country FROM online_retail_2
 ) t;
 
-# Creation of Dim_Time
+-- Creation of Dim_Time
 
 CREATE TABLE Dim_Time (
     TimeKey INT IDENTITY(1,1) PRIMARY KEY,
@@ -109,7 +109,7 @@ FROM (
 ) t;
 
 
-# Creation of Fact Table
+-- Creation of Fact Table
 
 CREATE TABLE Fact_Transactions (
     TransactionKey INT IDENTITY(1,1) PRIMARY KEY,
