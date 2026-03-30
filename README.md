@@ -176,7 +176,7 @@ Advanced queries demonstrating professional SQL patterns:
 
 ## Power BI Dashboard (Retail.pbix)
 
-**5 report pages:**
+**4 report pages:**
 
 | Page | Focus | Key Visuals |
 |------|-------|-------------|
@@ -184,7 +184,7 @@ Advanced queries demonstrating professional SQL patterns:
 | Page 2 | Product Performance | Top products bar, treemap, KPI visual |
 | Page 3 | Customer Analysis | Customer table, bar chart, customer segment shape |
 | Page 4 | CLV Predictions | Segment donut, CLV bar chart |
-| Page 5 | Python Visual | Advanced ML-powered dashboard visual |
+
 
 **DAX Measures created:**
 - `Total Revenue` · `Total Orders` · `Avg Order Value`
@@ -267,7 +267,7 @@ This trains the model and writes predictions to `ML_Customer_CLV_Predictions` in
 1. Open `Retail.pbix` in Power BI Desktop
 2. Go to **Transform Data → Data Source Settings**
 3. Update the SQL Server connection to your server name
-4. Click **Refresh** — all 5 pages populate with your data
+4. Click **Refresh** — all 4 pages populate with your data
 
 ---
 
