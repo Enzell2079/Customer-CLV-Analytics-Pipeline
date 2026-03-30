@@ -1,3 +1,6 @@
+-- SQL Query for Customer CLV Analytics Pipeline
+-- Data Warehouse Setup and Fact Table Population
+
 CREATE TABLE online_retail (
     RowID INT IDENTITY(1,1) PRIMARY KEY,
     Invoice nvarchar(50) NOT NULL,
@@ -24,10 +27,8 @@ FROM online_retail_2;
 
 
 
-
 SELECT COUNT(*) 
 FROM online_retail;
-
 
 
 
@@ -49,6 +50,7 @@ FROM (
     SELECT Customer_ID, Country FROM online_retail_2
 ) t
 WHERE Customer_ID IS NOT NULL;
+
 
 
 -- Creation Dim_Products
