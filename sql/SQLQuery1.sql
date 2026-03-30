@@ -1,5 +1,5 @@
 -- SQL Query for Customer CLV Analytics Pipeline
--- Data Warehouse Setup and Fact Table Population
+
 
 CREATE TABLE online_retail (
     RowID INT IDENTITY(1,1) PRIMARY KEY,
