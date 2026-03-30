@@ -8,6 +8,22 @@
 This project builds a complete business intelligence solution on top of the **Online Retail II** public dataset — a real-world e-commerce transaction dataset covering UK-based sales from 2009 to 2011. The pipeline takes raw transactional CSV data through every stage of a professional BI workflow: data modelling in SQL Server, advanced analytics with window functions and CTEs, machine learning for Customer Lifetime Value prediction, and interactive dashboarding in Power BI.
 
 ---
+## Logical Flow
+
+### Step 1 — Structuring the data (SQLQuery1.sql).
+I begin with approximately one million raw transaction rows, where each row represents a simple receipt: a customer purchasing a product, in a specific location, at a certain time and price. To make this data usable, I design and implement a star schema. I separate the data into dimension tables such as customers, products, countries, and time, along with a central fact table for transactions. This transformation makes the data efficient to query and logically organized.
+
+### Step 2 — Extracting analytical insights (SQLQuery2.sql).
+Once the structure is in place, I perform analytical queries to extract business intelligence. I identify top customers, analyze revenue trends over time, and evaluate short-term sales patterns. I also calculate RFM (Recency, Frequency, Monetary) metrics to understand customer behavior and detect potential churn. This step converts structured data into meaningful insights.
+
+### Step 3 — Predicting customer value (main.py).
+Using the features generated from SQL, I build a machine learning model to estimate Customer Lifetime Value (CLV). The model predicts how much each customer is expected to spend in the future. Based on these predictions, I segment customers into four categories: Low Value, Medium Value, High Value, and VIP. I then store these predictions back into the database for further use.
+
+### Step 4 — Visualizing the results (Retail.pbix).
+Finally, I load the data into Power BI to create an interactive dashboard. This allows users to explore revenue by country, analyze product performance, understand customer segments, and view machine learning predictions. All insights are accessible visually, without requiring technical knowledge.
+
+The intellectual progression of my work follows a clear path:
+raw data → structured data → analytical insights → predictive modeling → interactive visualization.
 
 ## Pipeline Architecture
 
