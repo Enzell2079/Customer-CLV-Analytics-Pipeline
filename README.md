@@ -213,9 +213,6 @@ Advanced queries demonstrating professional SQL patterns:
 ```
 retail-intelligence-dashboard/
 │
-├── data/
-│   ├── online_retail_1.csv       # Raw transactions 2009–2010 (525K rows)
-│   └── online_retail_2.csv       # Raw transactions 2010–2011 (542K rows)
 │
 ├── sql/
 │   ├── SQLQuery1.sql             # Schema creation + star model build
@@ -226,7 +223,7 @@ retail-intelligence-dashboard/
 │
 ├── dashboard/
 │   └── Retail.pbix               # Power BI report
-│
+│   └── screenshots of the pages
 └── README.md
 ```
 
