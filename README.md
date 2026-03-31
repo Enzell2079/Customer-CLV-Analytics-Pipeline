@@ -1,5 +1,6 @@
 # Retail Intelligence Dashboard
 
+
 ### End-to-End Business Intelligence Pipeline: Data Engineering · SQL Analytics · Machine Learning · Power BI
 
 ---
